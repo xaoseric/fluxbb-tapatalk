@@ -1,0 +1,53 @@
+
+  1. Edit template_readme.txt and save it as readme.txt.
+  
+  
+  2. Additional source files have to be placed in the /files/ directory. 
+
+  
+  3. Open up install_mod.php and edit it to your liking. NOTE: You should
+     only include the mod install script if your mod requires running SQL-
+     queries against the database during installation. If your mod does not
+     alter the database layout or contents in any way, you should remove
+     install_mod.php.
+          
+  
+  4. We encourage you to make your modification translatable. This can easily
+     be achieved by defining your strings in /files/lang/English/mod_name.php
+     (Do not forget to alter the name of the language file)
+     
+     In your source code, you then have to include the language definitions:
+     
+     
+if (file_exists(PUN_ROOT.'lang/'.$pun_user['language'].'/mod_name.php'))
+     	
+require PUN_ROOT.'lang/'.$pun_user['language'].'/mod_name.php';
+     
+else
+     	require PUN_ROOT.'lang/English/mod_name.php';
+     	
+     
+Now simply use $lang_mod_name['Example'] instead of hardcoded strings.
+
+  
+5. Archive the files together in an archive (zip, tar.gz, tar.bz2 or rar) with
+    
+ all (if any) other files your mod needs.
+
+ 
+ 6. Visit the FluxBB Modification Repository at http://fluxbb.org/resources/mods/ 
+     and upload your mod through the upload interface.
+
+  
+Version numbering: The first release of a mod should always be 1.0. 1.0.1
+                     
+is a bug fix release based on 1.0. If the new version
+                     
+offers added features or a large number of bugfixes it
+                     
+could be called 1.1. Stepping up to version 2.0 would
+  more or less require a complete rewrite of the mod.
+
+  
+NOTE: Please save text files with UNIX style linebreaks if possible.
+  
