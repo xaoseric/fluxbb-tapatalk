@@ -9,10 +9,10 @@ $author         = 'XAOS Interactive';
 $author_email   = 'info@xaos-ia.com';
 
 // Versions of FluxBB this mod was created for. A warning will be displayed, if versions do not match
-$fluxbb_versions= array('1.5.0');
+$fluxbb_versions= array('1.5.7');
 
 // Set this to false if you haven't implemented the restore function (see below)
-$mod_restore	= true;
+$mod_restore = false;
 
 
 // This following function will be called when the user presses the "Install" button
@@ -56,7 +56,7 @@ function install()
 	$db->create_table('new_table_name', $schema) or error('Unable to create table "new_table_name"', __FILE__, __LINE__, $db->error());
 */
 	
-	$schema = array(
+	$tapatalk_users = array(
 		'FIELDS' => array(
 			'userid' => array(
 				'allow_null' => false
@@ -66,6 +66,17 @@ function install()
 			),
 		),
 	 );
+	 
+	 $tapatalk_push_data = array (
+	 	'FIELDS' => array (
+	 		'push_id' => array(
+	 		
+	 		),	
+	 	),
+	 ); 
+	 
+	 $db->create_table('tapatalk_users', $tapatalk_users) or error('Unable to create table "tapatalk_users"', __FILE__, __LINE__, $db->error());
+	 $db->create_table('tapatalk_push_data', $tapatalk_push_data) or error('Unable to create table "tapatalk_push_data"', __FILE__, __LINE__, $db->error());
 }
 
 // This following function will be called when the user presses the "Restore" button (only if $mod_restore is true (see above))
